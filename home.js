@@ -14,6 +14,8 @@ function setInnertext(value){
    return document.getElementById('main-balance').innerText = value;
 
 }
+// transaction
+const transactionData = [];
 // big button function 
 
 function bigButton(id){
@@ -23,6 +25,19 @@ function bigButton(id){
     }
     document.getElementById(id).style.display = 'block';
 }
+// toggle button 
+function handleButton(id){
+     const formbtn=document.getElementsByClassName('form-btn');
+     for(const btn of formbtn){
+        btn.classList.remove('border-[#0874f2]', 'bg-[#0874f20d]');
+        btn.classList.add('border-gray-300');
+     }
+     document.getElementById(id).classList.remove
+     ('border-gray-300');
+     document.getElementById(id).classList.add
+     ('border-[#0874f2]', 'bg-[#0874f20d]');
+}
+
 // add money
 document.getElementById('add-money').addEventListener('click',
      function(e) {
@@ -44,7 +59,13 @@ document.getElementById('add-money').addEventListener('click',
             console.log(mainBalance);
             const totalBalance = mainBalance + addAmount;
            setInnertext(totalBalance);
-
+           
+           const data={
+            name:'Add Money',
+            date: new Date().toLocaleString(),
+           }
+           transactionData.push(data);
+           console.log(transactionData);
 });
 // withdraw money
 document.getElementById('withdraw-btn').addEventListener('click',
@@ -68,6 +89,12 @@ const agent=getinput('agent-number');
     }
     const totalBal=mainBal-withdrawAmount
     setInnertext(totalBal);
+    const data={
+            name:'Cash Out',
+            date: new Date().toLocaleString(),
+           }
+           transactionData.push(data);
+              console.log(transactionData);
     })
 // transfer money 
 document.getElementById('transfer-btn').addEventListener('click',function(){
@@ -90,28 +117,43 @@ if(transferAmount>mainBal){
 }
 const realAmount=mainBal-transferAmount;
 setInnertext(realAmount);
+
+const data={
+            name:'Transfer Money',
+            date: new Date().toLocaleString(),
+           }
+           transactionData.push(data);
+           console.log(transactionData);
 })
 
     // big button
 document.getElementById('add-button').addEventListener('click',
     function(){
      bigButton('add-money-section');
-     const formbtn=document.getElementsByClassName('form-btn');
-     for(const btn of formbtn){
-        btn.classList.remove('border-[]');
-     }
-
+     handleButton('add-button');
 }) 
 document.getElementById('cash-button').addEventListener('click',
     function(){  
     bigButton('cash-out-section');
+   handleButton('cash-button');
 })
 document.getElementById('transfer-button').addEventListener('click',
     function(){
         bigButton('transfer-section');
+     handleButton('transfer-button');
     })
-
 document.getElementById('bonus-button').addEventListener('click',
    function(){
        bigButton('bonus-section');
+    handleButton('bonus-button');
+   })
+   document.getElementById('pay-bill-button').addEventListener('click',
+   function(){
+       bigButton('pay-bill-section');
+       handleButton('pay-bill-button');
+   })
+   document.getElementById('transaction-button').addEventListener('click',
+   function(){
+       bigButton('transaction-section');
+    handleButton('transaction-button');
    })

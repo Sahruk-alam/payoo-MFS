@@ -54,12 +54,12 @@
             <p class="text-[#080808b3] font-[14px]">Get Bonus</p>
         </div>
 
-        <div class="rounded-xl border-1 form-btn border-gray-300 p-3 flex justify-center items-center flex-col">
+        <div id="pay-bill-button" class="rounded-xl border-1 form-btn border-gray-300 p-3 flex justify-center items-center flex-col">
             <img src="./assets/purse1.png" alt="">
             <p class="text-[#080808b3] font-[14px]">Pay Bill</p>
         </div>
 
-        <div class="rounded-xl border-1 form-btn border-gray-300 p-3 flex justify-center items-center flex-col">
+        <div id="transaction-button" class="rounded-xl border-1 form-btn border-gray-300 p-3 flex justify-center items-center flex-col">
             <img src="./assets/transaction1.png" alt="">
             <p class="text-[#080808b3] font-[14px]">Transaction</p>
         </div>
@@ -157,7 +157,7 @@
     </div>
     </div>
 <!-- Get bonus section  -->
-    <div id="bonus-section" class="form" >
+    <div id="bonus-section" class="form" style="display: none;">
          <h2 class="font-bold text-[18px] mt-4">Get Bonus</h2> 
     <div class="bg-white rounded-lg p-5 mt-4 rounded-lg p-6">
     <div> 
@@ -170,11 +170,71 @@
     </div>  
     </div>
 
+       <!-- pay bill section                -->
 
+       <div id="pay-bill-section" class="form" style="display: none;">
+    <h2 class="font-bold text-[18px] mt-4">Pay Bill</h2> 
+    <div class="bg-white rounded-lg p-5 mt-4 rounded-lg p-6">
+        <div>
+         <label class="font-semibold text-[16px]" >Select To Pay</label> <br>
+        
+        <select id="" class="select mb-4 mt-3 w-full">           
+        <option>Select a back</option> 
+        <option>AB bank</option>
+        <option>Pubali bank</option> 
+        <option>Dutch Bangla bank</option>
+        </select>
+        </div>
+    <div>
+         <label class="font-semibold text-[16px]" >Biller Account Number</label> <br>
+    <input type="text" id="" placeholder="Enter account number"
+     class= " w-full input p-4 rounded-2xl bg-[#F4F5F7] mb-4 mt-3 border-none" />
+    </div>
 
+    <div> 
+        <label class="font-semibold text-[16px]" >Amount to Pay</label> <br>
+    <input type="text" id="" placeholder="Add Amount to pay"
+     class= "w-full input p-4 rounded-2xl bg-[#F4F5F7] mb-4 mt-3 border-none" />
+    </div>
+    
+     <div> 
+        <label class="font-semibold text-[16px]" >Pin Number</label> <br>
+    <input type="text" id=""  placeholder="Enter 4 digit pin number"
+     class= "w-full input p-4 rounded-2xl bg-[#F4F5F7] mb-4 mt-3 border-none" />
+    </div>
+       <button id="pay-btn"  class="btn bg-[#0874F2] text-white w-full 
+  rounded-2xl mt-4 text-[17px] font-semibold p-1 ">Pay Now</button>
+    </div>
 
+    </div>
+<!-- Transaction history -->
+    <div id="transaction-section" class="form">
+        <div class="flex justify-between items-center mt-5 ">
+            <div>
+            <h2 class="font-bold text-[18px] ">Transaction History</h2>
+        </div>
+        <div>
+            <p class="font-[400] text-[14px] text-[#08080880]">View All</p>
+        </div>
+        </div>
+
+       
+         <div class="flex justify-between items-center
+        rounded-xl bg-white my-4">
+            <div class=" flex p-3 gap-5 ">
+            <div>
+                <img class=" p-3 rounded-full bg-[#F4F5F7] " src="./assets/wallet1.png" alt="">
+            </div>
+            <div>
+                <p>Electricity Bill</p>
+                <p>Today 01:44 AM</p>
+            </div>
+        </div>
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+        </div>
+       
+    </div>
    </div>
-
    
    <script src="./home.js"></script>
 </body>

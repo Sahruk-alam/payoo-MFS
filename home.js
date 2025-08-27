@@ -16,8 +16,8 @@ function setInnertext(value){
 }
 // transaction
 const transactionData = [];
-// big button function 
 
+// big button function 
 function bigButton(id){
      const forms=document.getElementsByClassName('form')
     for(const form of forms){
@@ -25,6 +25,7 @@ function bigButton(id){
     }
     document.getElementById(id).style.display = 'block';
 }
+
 // toggle button 
 function handleButton(id){
      const formbtn=document.getElementsByClassName('form-btn');
@@ -83,7 +84,7 @@ const agent=getinput('agent-number');
         alert("Please enter a valid 4-digit pin number.");
         return;
     }
-    if(withdrawAmount>mainBal){
+    if(withdrawAmount>mainBal || withdrawAmount<0){
         alert('Insufficient Balance');
         return;
     }
@@ -127,33 +128,70 @@ const data={
 })
 
     // big button
+    // add money button
 document.getElementById('add-button').addEventListener('click',
     function(){
      bigButton('add-money-section');
      handleButton('add-button');
 }) 
+// cash button
 document.getElementById('cash-button').addEventListener('click',
     function(){  
     bigButton('cash-out-section');
    handleButton('cash-button');
 })
+// transfer button
 document.getElementById('transfer-button').addEventListener('click',
     function(){
         bigButton('transfer-section');
      handleButton('transfer-button');
     })
+    // bonus button
 document.getElementById('bonus-button').addEventListener('click',
    function(){
        bigButton('bonus-section');
     handleButton('bonus-button');
    })
+//    pay bill button
    document.getElementById('pay-bill-button').addEventListener('click',
    function(){
        bigButton('pay-bill-section');
        handleButton('pay-bill-button');
    })
+//    transaction button
    document.getElementById('transaction-button').addEventListener('click',
    function(){
        bigButton('transaction-section');
     handleButton('transaction-button');
+    console.log('click transaction-button')
+    console.log(transactionData)
    })
+
+//    transaction handle 
+
+document.getElementById('transaction-button').addEventListener
+('click',function(){
+const transactionContainer=document.getElementById
+('transaction-container');
+transactionContainer.innerHTML=" ";
+for(const data of transactionData){
+    const div=document.createElement('div');
+    div.innerHTML=`
+     <div class="flex justify-between items-center
+                rounded-xl bg-white my-4">
+            <div class=" flex p-3 gap-5 ">
+            <div>
+                <img class=" p-3 rounded-full bg-[#F4F5F7] " src="./assets/wallet1.png" alt="">
+            </div>
+            <div>
+                <p>${data.name}</p>
+                <p>${data.date}</p>
+            </div>
+        </div>
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+        </div>
+    `
+    
+    transactionContainer.appendChild(div);
+}
+})
